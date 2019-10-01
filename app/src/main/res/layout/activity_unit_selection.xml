@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.activity.UnitSelectionActivity">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.2"
+        android:background="@mipmap/pidilite_splash" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="15dp">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Please select your unit."
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/rbKhakhara"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="radio_button_click"
+                android:text="@string/kahakhara_unit" />
+
+            <RadioButton
+                android:id="@+id/rbMasala"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="radio_button_click"
+                android:text="@string/masala_unit" />
+
+            <RadioButton
+                android:id="@+id/rbBakery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="radio_button_click"
+                android:text="@string/bakery_unit" />
+        </RadioGroup>
+
+
+        <Button
+            android:id="@+id/btnSubmitUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/strSubmitUnit"
+            android:textAllCaps="false" />
+    </LinearLayout>
+</RelativeLayout>
