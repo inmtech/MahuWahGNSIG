@@ -1,7 +1,6 @@
 package com.app.googlespreadsheet.view.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.RadioButton
@@ -22,9 +21,9 @@ class UnitSelectionActivity : BaseActivity() {
             finish()
         }
         radio_group.setOnCheckedChangeListener(
-            RadioGroup.OnCheckedChangeListener { group, checkedId ->
-                val radio: RadioButton = findViewById(checkedId)
-            })
+                RadioGroup.OnCheckedChangeListener { group, checkedId ->
+                    val radio: RadioButton = findViewById(checkedId)
+                })
 
         btnSubmitUnit.setOnClickListener(View.OnClickListener {
 
@@ -32,16 +31,16 @@ class UnitSelectionActivity : BaseActivity() {
             if (id != -1) { // If any radio button checked from radio group
                 val radio: RadioButton = findViewById(id)
                 Toast.makeText(
-                    applicationContext, "On button click : ${radio.text}",
-                    Toast.LENGTH_SHORT
+                        applicationContext, "You have selecte unit : ${radio.text}",
+                        Toast.LENGTH_SHORT
                 ).show()
                 SharedPrefsUtil.getInstance().setSheetName(this, radio.getText().toString())
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
             } else {
                 Toast.makeText(
-                    applicationContext, "Please Select any unit.",
-                    Toast.LENGTH_SHORT
+                        applicationContext, "Please Select any unit.",
+                        Toast.LENGTH_SHORT
                 ).show()
             }
         })

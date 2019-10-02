@@ -1,5 +1,6 @@
 package com.app.googlespreadsheet.view.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.SharedMemory
 import androidx.core.view.GravityCompat
@@ -61,6 +62,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 replaceFragment(this, UnitSelectionFragment())
             }
             R.id.nav_tools -> {
+                SharedPrefsUtil.getInstance().setLogin(this, false)
+                startActivity(Intent(this, LoginAcitivity::class.java))
                 finish()
             }
         }

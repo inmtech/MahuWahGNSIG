@@ -12,6 +12,7 @@
         android:background="@mipmap/pidilite_splash" />
 
     <LinearLayout
+        android:id="@+id/loginContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/padding_10"
@@ -21,6 +22,7 @@
 
 
         <EditText
+            android:id="@+id/edtxtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:drawable/editbox_background_normal"
@@ -32,14 +34,23 @@
 
         <Button
             android:id="@+id/btnLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            style="@style/button_style"
             android:layout_marginTop="@dimen/dimen20dp"
-            android:text="@string/strLogin"
-            android:textAllCaps="false" />
+            android:text="@string/strLogin" />
 
     </LinearLayout>
 
+
+    <TextView
+        android:id="@+id/tvLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimen80dp"
+        android:text="@string/please_wait"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/dimen20dp"
+        android:textStyle="bold"
+        android:visibility="gone" />
 
 </RelativeLayout>

@@ -1,8 +1,7 @@
 <resources>
-    <string name="app_name">GNS IG</string>
+    <string name="app_name">MahuWah</string>
     <string name="noti_channel_default">default</string>
     <string name="noti_channel_second">second</string>
-
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hintName">Name</string>
     <string name="hintNumber">Number</string>
@@ -25,7 +24,7 @@
     <string name="menu_home">Add Record</string>
     <string name="menu_gallery">Display Record</string>
     <string name="menu_slideshow">Select Unit</string>
-    <string name="menu_tools">Exit</string>
+    <string name="menu_tools">Logout</string>
     <string name="hintDate">Enter Date</string>
     <string name="hintCustomerName">Enter Customer Name</string>
     <string name="hintItemName">Enter Product Name</string>
@@ -50,6 +49,10 @@
     <string name="welcome_text">Welcome to Gram Nirman Samaj Income Generation System</string>
     <string name="hint_password">Enter password</string>
     <string name="strLogin">Login</string>
+    <string name="please_wait">Please wait...</string>
+    <string name="warn_enter_password">Please enter password.</string>
+    <string name="warn_password_incorrect">Password was incorrect, Please try again.</string>
+    <string name="sheetname_password">Password</string>
 
     <string-array name="khakhara_product">
         <item name="select_product">Select Product Name</item>

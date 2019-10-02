@@ -1,202 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              tools:context=".view.fragment.AddRecordFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.fragment.AddRecordFragment">
 
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="visible">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmer_view_container"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:shimmer_auto_start="false"
-                app:shimmer_duration="1000">
+            android:id="@+id/shimmer_view_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:shimmer_auto_start="false"
+            app:shimmer_duration="1000">
 
             <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <include layout="@layout/recipe_placeholder_item"/>
+                <include layout="@layout/recipe_placeholder_item" />
 
-                <include layout="@layout/recipe_placeholder_item"/>
+                <include layout="@layout/recipe_placeholder_item" />
 
-                <include layout="@layout/recipe_placeholder_item"/>
+                <include layout="@layout/recipe_placeholder_item" />
 
-                <include layout="@layout/recipe_placeholder_item"/>
+                <include layout="@layout/recipe_placeholder_item" />
 
-                <include layout="@layout/recipe_placeholder_item"/>
+                <include layout="@layout/recipe_placeholder_item" />
 
-                <include layout="@layout/recipe_placeholder_item"/>
+                <include layout="@layout/recipe_placeholder_item" />
             </LinearLayout>
 
         </com.facebook.shimmer.ShimmerFrameLayout>
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerviewDataList"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:visibility="gone"/>
+                android:id="@+id/recyclerviewDataList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
         </LinearLayout>
     </LinearLayout>
 
     <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/padding_10"
-                android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_10"
+            android:orientation="vertical">
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/edtxtDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                <EditText
-                        android:id="@+id/edtxtDate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1"
-                        android:background="@android:drawable/editbox_background_normal"
-                        android:hint="@string/hintDate"
-                        android:inputType="date"/>
+                    android:layout_weight="1"
+                    android:background="@android:drawable/editbox_background_normal"
+                    android:hint="@string/hintDate"
+                    android:inputType="date" />
 
                 <ImageView
-                        android:id="@+id/ivSelectDate"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_datepicker"/>
+                    android:id="@+id/ivSelectDate"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_datepicker" />
             </LinearLayout>
 
 
             <EditText
-                    android:id="@+id/edtxtCustomerName"
-                    style="@style/edtxtAddRecordStyle"
-                    android:hint="@string/hintCustomerName"
-                    android:inputType="text"/>
+                android:id="@+id/edtxtCustomerName"
+                style="@style/edtxtAddRecordStyle"
+                android:hint="@string/hintCustomerName"
+                android:inputType="text" />
 
             <EditText
-                    android:id="@+id/edtxtItemName"
-                    style="@style/edtxtAddRecordStyle"
-                    android:hint="@string/hintItemName"
-                    android:inputType="text"
-                    android:visibility="gone"/>
+                android:id="@+id/edtxtItemName"
+                style="@style/edtxtAddRecordStyle"
+                android:hint="@string/hintItemName"
+                android:inputType="text"
+                android:visibility="gone" />
 
             <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/padding_10"
-                    android:background="@android:drawable/editbox_background_normal">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_10"
+                android:background="@android:drawable/editbox_background_normal">
 
                 <Spinner
-                        android:id="@+id/spinnerProductName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                    android:id="@+id/spinnerProductName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </FrameLayout>
 
             <EditText
-                    android:id="@+id/edtxtQty"
-                    style="@style/edtxtAddRecordStyle"
-                    android:background="@android:drawable/editbox_background"
-                    android:hint="@string/hintQty"
-                    android:inputType="numberDecimal"/>
+                android:id="@+id/edtxtQty"
+                style="@style/edtxtAddRecordStyle"
+                android:background="@android:drawable/editbox_background"
+                android:hint="@string/hintQty"
+                android:inputType="numberDecimal" />
 
             <EditText
-                    android:id="@+id/edtxtRate"
-                    style="@style/edtxtAddRecordStyle"
-                    android:hint="@string/hintRate"
-                    android:inputType="numberDecimal"/>
+                android:id="@+id/edtxtRate"
+                style="@style/edtxtAddRecordStyle"
+                android:hint="@string/hintRate"
+                android:inputType="numberDecimal" />
 
             <EditText
-                    android:id="@+id/edtxtTotalAmt"
-                    style="@style/edtxtAddRecordStyle"
-                    android:hint="@string/hintTotalAmt"
-                    android:inputType="numberDecimal"/>
+                android:id="@+id/edtxtTotalAmt"
+                style="@style/edtxtAddRecordStyle"
+                android:hint="@string/hintTotalAmt"
+                android:inputType="numberDecimal" />
 
 
             <EditText
-                    android:id="@+id/edtxtInvoiceNumber"
-                    style="@style/edtxtAddRecordStyle"
-                    android:hint="@string/hintInvoiceNumber"
-                    android:inputType="numberDecimal"/>
+                android:id="@+id/edtxtInvoiceNumber"
+                style="@style/edtxtAddRecordStyle"
+                android:hint="@string/hintInvoiceNumber"
+                android:inputType="numberDecimal" />
 
             <EditText
-                    android:id="@+id/edtxtPaymentBy"
-                    style="@style/edtxtAddRecordStyle"
-                    android:hint="@string/hintPaymentBy"
-                    android:inputType="text"/>
+                android:id="@+id/edtxtPaymentBy"
+                style="@style/edtxtAddRecordStyle"
+                android:hint="@string/hintPaymentBy"
+                android:inputType="text" />
 
             <EditText
-                    android:id="@+id/edtxtRemark"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen80dp"
-                    android:layout_marginTop="@dimen/padding_10"
-                    android:background="@android:drawable/editbox_background"
-                    android:gravity="top"
-                    android:hint="@string/hintRemark"
-                    android:imeOptions="actionDone"
-                    android:inputType="text"
-                    android:scrollbars="vertical"/>
+                android:id="@+id/edtxtRemark"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen80dp"
+                android:layout_marginTop="@dimen/padding_10"
+                android:background="@android:drawable/editbox_background"
+                android:gravity="top"
+                android:hint="@string/hintRemark"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:scrollbars="vertical" />
 
         </LinearLayout>
     </ScrollView>
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnAddRecord"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/padding_10"
+            android:text="@string/strAddRecord"
+            android:textAllCaps="false"
+            android:visibility="gone" />
 
         <Button
-                android:id="@+id/btnAddRecord"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="@dimen/padding_10"
-                android:text="@string/strAddRecord"
-                android:visibility="gone"
-                android:textAllCaps="false"/>
+            android:id="@+id/btnUpdateRecord"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/padding_10"
+            android:layout_marginLeft="@dimen/padding_10"
+            android:background="@drawable/round_button"
+            android:text="@string/strUpdateRecord"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen15dp"
+            android:visibility="visible" />
 
         <Button
-                android:id="@+id/btnUpdateRecord"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="@dimen/padding_10"
-                android:layout_marginLeft="@dimen/padding_10"
-                android:text="@string/strUpdateRecord"
-                android:textAllCaps="false"
-                android:visibility="visible"/>
-
-        <Button
-                android:id="@+id/btnDeleteRecord"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="@dimen/padding_10"
-                android:text="@string/strDeleteRecord"
-                android:textAllCaps="false"
-                android:visibility="gone"/>
+            android:id="@+id/btnDeleteRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/padding_10"
+            android:text="@string/strDeleteRecord"
+            android:textAllCaps="false"
+            android:visibility="gone" />
 
     </LinearLayout>
 

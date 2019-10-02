@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.activity.UnitSelectionActivity">
+    tools:context=".view.fragment.UnitSelectionFragment">
 
 
     <ImageView
@@ -17,7 +17,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:orientation="vertical">
 
         <RadioGroup
@@ -32,37 +31,34 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Please select your unit."
-                android:textSize="20sp" />
+                android:textSize="@dimen/dimen20dp" />
 
             <RadioButton
                 android:id="@+id/rbKhakhara"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="radio_button_click"
-                android:text="@string/kahakhara_unit" />
+                android:text="@string/kahakhara_unit"
+                android:textSize="@dimen/dimen15dp" />
 
             <RadioButton
                 android:id="@+id/rbMasala"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="radio_button_click"
-                android:text="@string/masala_unit" />
+                android:text="@string/masala_unit"
+                android:textSize="@dimen/dimen15dp" />
 
             <RadioButton
                 android:id="@+id/rbBakery"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="radio_button_click"
-                android:text="@string/bakery_unit" />
+                android:text="@string/bakery_unit"
+                android:textSize="@dimen/dimen15dp" />
         </RadioGroup>
 
 
         <Button
             android:id="@+id/btnSubmitUnit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:text="@string/strSubmitUnit"
-            android:textAllCaps="false" />
+            style="@style/button_style" />
     </LinearLayout>
 </RelativeLayout>

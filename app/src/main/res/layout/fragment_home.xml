@@ -173,8 +173,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="@dimen/padding_10"
+            android:background="@drawable/round_button"
             android:text="@string/strAddRecord"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen15dp" />
 
         <Button
             android:id="@+id/btnUpdateRecord"
@@ -197,6 +200,5 @@
             android:visibility="gone" />
 
     </LinearLayout>
-
 
 </LinearLayout>
