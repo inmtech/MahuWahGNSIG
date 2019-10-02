@@ -33,7 +33,6 @@ import kotlin.collections.ArrayList
  */
 class AddRecordFragment : BaseFragment(), RetrofitListener, listClickListener, View.OnClickListener {
 
-
     var listData: ArrayList<ListDataModel.Record> = ArrayList()
     var apiServices: ApiServices? = null
     var recordId = 0
