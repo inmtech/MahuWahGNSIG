@@ -145,7 +145,20 @@
                 android:id="@+id/edtxtPaymentBy"
                 style="@style/edtxtAddRecordStyle"
                 android:hint="@string/hintPaymentBy"
+                android:visibility="gone"
                 android:inputType="text" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_10"
+                android:background="@android:drawable/editbox_background_normal">
+
+                <Spinner
+                    android:id="@+id/spinnerPaymentBy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </FrameLayout>
 
             <EditText
                 android:id="@+id/edtxtRemark"

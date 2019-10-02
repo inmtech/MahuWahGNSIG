@@ -60,6 +60,7 @@ class EditRecordFragment : BaseFragment(), RetrofitListener, listClickListener, 
         recordId = it?.id!!
         edtxtDate.setText(CommonUtils.getConvertedDate(it?.date))
         setProductSpinner(it?.itemName)
+        setPaymentBySpinner(it?.paymentBy)
         edtxtRemark.setText(it?.remark)
         edtxtTotalAmt.setText("" + it?.totalAmount)
         edtxtPaymentBy.setText(it?.paymentBy)
@@ -183,7 +184,7 @@ class EditRecordFragment : BaseFragment(), RetrofitListener, listClickListener, 
         } else if (!CommonUtils.validateControl(requireContext(), edtxtInvoiceNumber)) {
             CommonUtils.displayToastShort(requireContext(), getString(R.string.warn_invoice))
             return false
-        } else if (!CommonUtils.validateControl(requireContext(), edtxtPaymentBy)) {
+        } else if (spinnerPaymentBy.selectedItem.equals(getString(R.string.warn_payment_by_method))) {
             CommonUtils.displayToastShort(requireContext(), getString(R.string.warn_paymentby))
             return false
         } else {
@@ -192,6 +193,7 @@ class EditRecordFragment : BaseFragment(), RetrofitListener, listClickListener, 
     }
 
     private fun callUpdateRecord() {
+        CommonUtils.hideKeyboard(requireContext(), btnUpdateRecord)
         shimmer_view_container.visibility = View.VISIBLE
         shimmer_view_container.startShimmer()
         var call: Call<UpdateRecordResponse>? = null
@@ -206,7 +208,7 @@ class EditRecordFragment : BaseFragment(), RetrofitListener, listClickListener, 
                         edtxtRate.getText().toString(),
                         edtxtTotalAmt.getText().toString(),
                         edtxtInvoiceNumber.getText().toString(),
-                        edtxtPaymentBy.getText().toString(),
+                        spinnerPaymentBy.selectedItem.toString(),
                         edtxtRemark.getText().toString()
                 )
         ApiPresenter.call(call, this, requireContext())
@@ -233,4 +235,16 @@ class EditRecordFragment : BaseFragment(), RetrofitListener, listClickListener, 
         }
     }
 
+
+    private fun setPaymentBySpinner(itemName: String) {
+        val aa = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, resources.getStringArray(R.array.payment_method))
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerPaymentBy.setAdapter(aa)
+        for (i in 0 until resources.getStringArray(R.array.payment_method).size) {
+            if (itemName.equals(resources.getStringArray(R.array.payment_method).get(i))) {
+                spinnerPaymentBy.setSelection(i)
+            }
+        }
+
+    }
 }

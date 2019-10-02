@@ -46,9 +46,10 @@ class AddRecordFragment : BaseFragment(), RetrofitListener, listClickListener, V
         btnDeleteRecord.setOnClickListener(this)
         ivSelectDate.setOnClickListener(this)
         (activity as AppCompatActivity).supportActionBar!!.title =
-            SharedPrefsUtil.getInstance().getSheetName(requireContext()) + " Unit"
+                SharedPrefsUtil.getInstance().getSheetName(requireContext()) + " Unit"
         edtxtDate.setText(CommonUtils.getCurrentDate("dd/MM/yyyy"))
         setProductSpinner()
+        setPaymentBySpinner()
     }
 
     private fun init() {
@@ -57,8 +58,8 @@ class AddRecordFragment : BaseFragment(), RetrofitListener, listClickListener, V
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         init()
         return inflater.inflate(com.app.googlespreadsheet.R.layout.fragment_home, container, false)
@@ -66,14 +67,9 @@ class AddRecordFragment : BaseFragment(), RetrofitListener, listClickListener, V
 
     override fun onClick(v: View?) {
         when (v?.id) {
-           R.id.btnAddRecord -> if (validateControls()) callAddRecord()
+            R.id.btnAddRecord -> if (validateControls()) callAddRecord()
 
-           R.id.btnUpdateRecord -> if (validateControls()) callUpdateRecord()
-
-           R.id.btnDeleteRecord -> if (validateControls()) {
-            }
-
-           R.id.ivSelectDate -> openDatePickerDialog()
+            R.id.ivSelectDate -> openDatePickerDialog()
 
         }
     }
@@ -84,14 +80,14 @@ class AddRecordFragment : BaseFragment(), RetrofitListener, listClickListener, V
         var month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
         val dpd = DatePickerDialog(
-            requireContext(),
-            DatePickerDialog.OnDateSetListener { view, year,   monthOfYear, dayOfMonth ->
-                month = month + 1
-                edtxtDate.setText("" + dayOfMonth + "/" + month + "/" + year)
-            },
-            year,
-            month,
-            day
+                requireContext(),
+                DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                    month = month + 1
+                    edtxtDate.setText("" + dayOfMonth + "/" + month + "/" + year)
+                },
+                year,
+                month,
+                day
         )
         dpd.show()
     }
@@ -103,13 +99,13 @@ class AddRecordFragment : BaseFragment(), RetrofitListener, listClickListener, V
     }
 
     override fun <T> retrofitOnSuccessResponse(success: T) {
-        Log.i("Response",  "" + success)
+        Log.i("Response", "" + success)
         Handler().postDelayed(object : Runnable {
             override fun run() {
                 var arrlistData: ListDataModel
                 if (success is ListDataModel) {
                     arrlistData = success as ListDataModel
-                    listData= ArrayList()
+                    listData = ArrayList()
                     listData?.clear()
                     listData?.addAll(arrlistData.records)
                     if (recyclerviewDataList != null) {
@@ -195,7 +191,7 @@ class AddRecordFragment : BaseFragment(), RetrofitListener, listClickListener, V
         } else if (!CommonUtils.validateControl(requireContext(), edtxtInvoiceNumber)) {
             CommonUtils.displayToastShort(requireContext(), getString(R.string.warn_invoice))
             return false
-        } else if (!CommonUtils.validateControl(requireContext(), edtxtPaymentBy)) {
+        } else if (spinnerPaymentBy.selectedItem.equals(getString(R.string.warn_payment_by_method))) {
             CommonUtils.displayToastShort(requireContext(), getString(R.string.warn_paymentby))
             return false
         } else {
@@ -204,6 +200,7 @@ class AddRecordFragment : BaseFragment(), RetrofitListener, listClickListener, V
     }
 
     private fun callAddRecord() {
+        CommonUtils.hideKeyboard(requireContext(), btnAddRecord)
         if (listData.size > 0) {
             for (i in 0 until listData.size) {
                 if (i == listData.size - 1) {
@@ -216,29 +213,7 @@ class AddRecordFragment : BaseFragment(), RetrofitListener, listClickListener, V
         shimmer_view_container.startShimmer()
         var call: Call<InsertRecordResponse>? = null
         call = apiServices?.addRecord(
-            SharedPrefsUtil.getInstance().getSheetName(requireContext()),
-            "" + recordId,
-            edtxtDate.getText().toString(),
-            edtxtCustomerName.getText().toString(),
-            spinnerProductName.selectedItem.toString(),
-            edtxtQty.getText().toString(),
-            edtxtRate.getText().toString(),
-            edtxtTotalAmt.getText().toString(),
-            edtxtInvoiceNumber.getText().toString(),
-            edtxtPaymentBy.getText().toString(),
-            edtxtRemark.getText().toString()
-        )
-        ApiPresenter.call(call, this, requireContext())
-    }
-
-
-    private fun callUpdateRecord() {
-        shimmer_view_container.visibility = View.VISIBLE
-        shimmer_view_container.startShimmer()
-        var call: Call<UpdateRecordResponse>? = null
-        call =
-            apiServices?.updateRecord(
-                "Masala",
+                SharedPrefsUtil.getInstance().getSheetName(requireContext()),
                 "" + recordId,
                 edtxtDate.getText().toString(),
                 edtxtCustomerName.getText().toString(),
@@ -247,9 +222,9 @@ class AddRecordFragment : BaseFragment(), RetrofitListener, listClickListener, V
                 edtxtRate.getText().toString(),
                 edtxtTotalAmt.getText().toString(),
                 edtxtInvoiceNumber.getText().toString(),
-                edtxtPaymentBy.getText().toString(),
+                spinnerPaymentBy.selectedItem.toString(),
                 edtxtRemark.getText().toString()
-            )
+        )
         ApiPresenter.call(call, this, requireContext())
     }
 
@@ -267,4 +242,10 @@ class AddRecordFragment : BaseFragment(), RetrofitListener, listClickListener, V
         spinnerProductName.setAdapter(aa)
     }
 
+
+    private fun setPaymentBySpinner() {
+        val aa = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, resources.getStringArray(R.array.payment_method))
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerPaymentBy.setAdapter(aa)
+    }
 }

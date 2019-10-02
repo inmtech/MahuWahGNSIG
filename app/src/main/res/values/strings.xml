@@ -40,12 +40,13 @@
     <string name="alertNo">No</string>
     <string name="warn_enter_date">Please select any date.</string>
     <string name="warn_required_cutname">Please enter customer name.</string>
-    <string name="warn_paymentby">Please enter payment by method name.</string>
+    <string name="warn_paymentby">Please select payment by method name.</string>
     <string name="warn_invoice">Please enter invoice number</string>
     <string name="warn_totalamt">Please enter total amount.</string>
     <string name="warn_rate">Please enter rate amount.</string>
     <string name="warn_qty">Please enter product quantity.</string>
     <string name="warn_productname">Select Product Name</string>
+    <string name="warn_payment_by_method">Select Payment By Method</string>
     <string name="welcome_text">Welcome to Gram Nirman Samaj Income Generation System</string>
     <string name="hint_password">Enter password</string>
     <string name="strLogin">Login</string>
@@ -87,4 +88,13 @@
         <item name="Jeeru">Jeeru</item>
         <item name="Ajawain">Ajawain</item>
     </string-array>
+
+    <string-array name="payment_method">
+        <item name="select_product">Select Payment By Method</item>
+        <item name="cash">Cash</item>
+        <item name="cheque">Cheque</item>
+        <item name="pending">Pending</item>
+        <item name="sample">Sample</item>
+    </string-array>
+
 </resources>
