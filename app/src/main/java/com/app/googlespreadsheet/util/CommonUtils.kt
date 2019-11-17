@@ -21,6 +21,8 @@ import android.view.inputmethod.InputMethodManager
  */
 class CommonUtils {
     companion object {
+        //app id ca-app-pub-4326312080857500~2915883709
+        //banner add id ca-app-pub-4326312080857500/9034074653
 
         var progressBar: ProgressBar? = null
 
@@ -64,6 +66,7 @@ class CommonUtils {
 
         fun getConvertedDate(strDate: String): String {
             var spf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+            spf.timeZone= TimeZone.getTimeZone("UTC")
             val newDate = spf.parse(strDate)
             spf = SimpleDateFormat("dd/MM/yyyy")
             return spf.format(newDate)
